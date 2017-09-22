@@ -11,10 +11,10 @@
 */
 
 View::composer('partitials.header', function($view){
-    $view->with('menu', DB::table('menu')->orderBy('sort', 'asc')->get());
+    $view->with('menu', DB::table('menu')->where('status', 1)->orderBy('sort', 'asc')->get());
 });
 View::composer('admin.partitials.menu', function($view){
-    $view->with('menu', DB::table('menu')->orderBy('sort', 'asc')->get());
+    $view->with('menu', DB::table('menu')->where('status', 1)->orderBy('sort', 'asc')->get());
 });
 
 View::composer('layout', function($view){
@@ -118,6 +118,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('{id}/delete', ['as' => 'admin.banner.delete', 'uses' => 'BannerController@destroy']);
         Route::get('create', ['as' => 'admin.banner.create', 'uses' => 'BannerController@create']);
         Route::post('store', ['as' => 'admin.banner.store', 'uses' => 'BannerController@store']);
+    });
+
+    Route::group(['prefix' => 'menu'], function () {
+        Route::get('', ['as' => 'admin.menu.list', 'uses' => 'admin\MenuController@index']);
+        Route::get('create', ['as' => 'admin.menu.create', 'uses' => 'admin\MenuController@create']);
+        Route::post('store', ['as' => 'admin.menu.store', 'uses' => 'admin\MenuController@store']);
+        Route::post('{id}/update', ['as' => 'admin.menu.update', 'uses' => 'admin\MenuController@update']);
+        Route::get('{id}/hide', ['as' => 'admin.menu.hide', 'uses' => 'admin\MenuController@hide']);
+        Route::get('{id}/show', ['as' => 'admin.menu.show', 'uses' => 'admin\MenuController@show']);
+        Route::get('{id}/delete', ['as' => 'admin.menu.delete', 'uses' => 'admin\MenuController@delete']);
     });
 
 
