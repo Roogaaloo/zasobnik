@@ -54,7 +54,7 @@ Auth::routes();
 
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
-Route::get('register', ['as' => 'register', 'uses' => 'HomeController@index']);
+//Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@index']);
 
 
 
@@ -131,6 +131,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
 
+
+
+    Route::group(['prefix' => 'forms'], function () {
+        Route::get('', ['as' => 'admin.form.list', 'uses' => 'admin\FormController@index']);
+        Route::get('{id}/detail', ['as' => 'admin.forms.detail', 'uses' => 'admin\FormController@detail']);
+    });
 
 
 });
