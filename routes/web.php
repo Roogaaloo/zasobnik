@@ -46,6 +46,11 @@ Route::get('/kontakt', ['as' => 'template.contact', 'uses' => 'ContactController
 Route::post('/kontakt/sendMessage', ['as' => 'contact.sendMessage', 'uses' => 'ContactController@store']);
 
 
+Route::group(['prefix' => 'dotaznik'], function () {
+    Route::get('', ['as' => 'form.index', 'uses' => 'FormController@index']);
+    Route::post('store', ['as' => 'form.store', 'uses' => 'FormController@store']);
+});
+
 
 
 
@@ -135,7 +140,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'forms'], function () {
         Route::get('', ['as' => 'admin.form.list', 'uses' => 'admin\FormController@index']);
-        Route::get('{id}/detail', ['as' => 'admin.forms.detail', 'uses' => 'admin\FormController@detail']);
+        Route::get('{id}/detail', ['as' => 'admin.form.detail', 'uses' => 'admin\FormController@detail']);
     });
 
 

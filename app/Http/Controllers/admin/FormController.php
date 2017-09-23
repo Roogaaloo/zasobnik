@@ -16,6 +16,20 @@ class FormController extends Controller
 
         $forms = DB::table('t_form')->orderBy('id', 'acs')->get();
 
-        return view('admin.form.list', compact('heading', 'forms'));
+        $count = DB::table('t_form')->count();
+
+
+
+        return view('admin.form.list', compact('heading', 'forms', 'count'));
+    }
+
+    public function detail($id)
+    {
+
+        $heading = 'Detail dotazníku číslo: ' . $id;
+
+        $item = DB::table('t_form')->where('id', $id)->first();
+
+        return view('admin.form.detail', compact('heading', 'item'));
     }
 }
