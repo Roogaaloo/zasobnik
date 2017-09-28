@@ -1,12 +1,21 @@
-<div class="col-sm-2">
-    <img src="/img/logo.png" width="180px">
+<div class="col-sm-2 logo">
+    <img src="/img/logo_admin.png">
+    <div class="admin-text">
+        Admin
+    </div>
 </div>
 <div class="col-sm-6">
-    | Administrace webu Jiří Svarovský
+    | Administrace webu Robert Galovič
 </div>
-<div class="col-sm-3 text-right">
-    {{ Auth::user()->name }}
+<div class="col-sm-2 col-sm-offset-2 text-right">
+    <div class="dropdown">
+        <button type="button" data-toggle="dropdown">{{ Auth::user()->name }}
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="{{ route('logout') }}">Odhlásit</a></li>
+            <li><a href="{{ route('admin.reset') }}">Změna hesla</a></li>
+        </ul>
+    </div>
 </div>
-<div class="col-sm-1 text-right">
-    <a href="{{ route('logout') }}">Odhlásit</a>
-</div>
+
+

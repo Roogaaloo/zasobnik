@@ -138,7 +138,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 
-    Route::group(['prefix' => 'forms'], function () {
+    Route::group(['prefix' => 'dotaznik'], function () {
         Route::get('', ['as' => 'admin.form.list', 'uses' => 'admin\FormController@index']);
         Route::get('{id}/detail', ['as' => 'admin.form.detail', 'uses' => 'admin\FormController@detail']);
     });

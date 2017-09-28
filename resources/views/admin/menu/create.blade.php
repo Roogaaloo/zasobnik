@@ -19,9 +19,9 @@
             </thead>
             <tbody>
                     <tr>
-                        <td><input type="number" name="sort"></td>
-                        <td><input type="text" name="name"></td>
-                        <td><input type="text" name="href"></td>
+                        <td><input class="form-control" type="number" name="sort"></td>
+                        <td><input class="form-control" type="text" name="name"></td>
+                        <td><input class="form-control" type="text" name="href"></td>
 
                         <td class="text-right">
                             <button href="{{ route('admin.menu.store') }}" type="submit" title="Uložit"><i class="fa fa-check"></i></button>

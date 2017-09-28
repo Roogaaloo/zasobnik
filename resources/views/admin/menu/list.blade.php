@@ -24,9 +24,9 @@
                         <form action="{{ route('admin.menu.update', $item->id) }}" method="post">
                             {!! csrf_field() !!}
                         <tr>
-                            <td><input type="number" name="sort" value="{{ $item->sort }}"></td>
-                            <td><input type="text" name="name" value="{{ $item->name }}"></td>
-                            <td><input type="text" name="href" value="{{ $item->href }}"></td>
+                            <td><input class="form-control" type="number" name="sort" value="{{ $item->sort }}"></td>
+                            <td><input class="form-control" type="text" name="name" value="{{ $item->name }}"></td>
+                            <td><input class="form-control" type="text" name="href" value="{{ $item->href }}"></td>
 
                             <td class="text-center">
                                 @if($item->status == 1)
