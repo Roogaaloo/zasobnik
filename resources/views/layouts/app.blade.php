@@ -18,10 +18,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&amp;subset=latin-ext" rel="stylesheet">
 
 
-    <link media="all" type="text/css" rel="stylesheet" href="/css/styles.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/admin.css">
 
 </head>
-<body>
+<body id="admin">
 
 @if (Session::has('success'))
     <div class="alert alert-success">
@@ -29,9 +29,9 @@
     </div>
 @endif
 
-    <div id="app">
+
         @yield('content')
-    </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

@@ -107,6 +107,7 @@
     background: #3ca997;
     transition: 0.2s ease;
     border: 1px solid #3ca997;
+    padding: 8px 20px;
 }
 .btn:hover, .btn:active, .btn:focus {
     color:#3ca997;
@@ -193,5 +194,96 @@ footer {
 }
 footer>.container {
     border: none !important;
+}
+.login-cont {
+    position: absolute;
+    top: 40vh;
+    left: 50vw;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+.login-cont .panel {
+    padding: 20px 10px 0;
+}
+.login-cont input[type='email'] {
+    padding-left: 60px;
+}
+.login-cont input[type='password'] {
+    padding-left: 60px;
+}
+.login-cont label:not(.switch) {
+    position: absolute;
+    z-index: 20;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+
+
+
+
+.switch {
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 23px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.remember {
+    margin-left: 45px;
+    margin-top: -27px;
 }
 
