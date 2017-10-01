@@ -10,6 +10,9 @@
 |
 */
 
+
+
+
 View::composer('partitials.header', function($view){
     $view->with('menu', DB::table('menu')->where('status', 1)->orderBy('sort', 'asc')->get());
 });
@@ -25,42 +28,43 @@ View::composer('partitials.footer_contact', function($view){
     $view->with('contact', DB::table('contact')->first());
 });
 
-Route::get('/', ['as' => 'template.home', 'uses' => 'HomeController@index']);
+Route::group(['prefix' => '/', 'middleware' => 'web'], function () {
 
-Route::get('/stranka-nenalezena', ['as' => '404', 'uses' => 'HomeController@error']);
+    Route::get('', ['as' => 'template.home', 'uses' => 'HomeController@index']);
 
-Route::post('/addMeeting', ['as' => 'contact.addMeeting', 'uses' => 'HomeController@addMeeting']);
+    Route::get('stranka-nenalezena', ['as' => '404', 'uses' => 'HomeController@error']);
 
-Route::get('/proc-se-mnou', ['as' => 'template.about', 'uses' => 'AboutController@index']);
+    Route::post('addMeeting', ['as' => 'contact.addMeeting', 'uses' => 'HomeController@addMeeting']);
 
-Route::get('/produkty', ['as' => 'categories.list', 'uses' => 'CategoryController@index']);
-Route::get('/produkty/{href}', ['as' => 'categories.detail', 'uses' => 'CategoryController@show']);
+    Route::get('proc-se-mnou', ['as' => 'template.about', 'uses' => 'AboutController@index']);
 
-Route::get('/reference', ['as' => 'reference.list', 'uses' => 'ReferenceController@index']);
-Route::post('/reference/addComment', ['as' => 'reference.addComment', 'uses' => 'ReferenceController@store']);
+    Route::get('produkty', ['as' => 'categories.list', 'uses' => 'CategoryController@index']);
+    Route::get('produkty/{href}', ['as' => 'categories.detail', 'uses' => 'CategoryController@show']);
 
-Route::get('/blog', ['as' => 'blog.list', 'uses' => 'BlogController@index']);
-Route::get('/blog/article/{href}', ['as' => 'blog.detail', 'uses' => 'BlogController@show']);
+    Route::get('reference', ['as' => 'reference.list', 'uses' => 'ReferenceController@index']);
+    Route::post('reference/addComment', ['as' => 'reference.addComment', 'uses' => 'ReferenceController@store']);
 
-Route::get('/kontakt', ['as' => 'template.contact', 'uses' => 'ContactController@index']);
-Route::post('/kontakt/sendMessage', ['as' => 'contact.sendMessage', 'uses' => 'ContactController@store']);
+    Route::get('blog', ['as' => 'blog.list', 'uses' => 'BlogController@index']);
+    Route::get('blog/article/{href}', ['as' => 'blog.detail', 'uses' => 'BlogController@show']);
+
+    Route::get('kontakt', ['as' => 'template.contact', 'uses' => 'ContactController@index']);
+    Route::post('kontakt/sendMessage', ['as' => 'contact.sendMessage', 'uses' => 'ContactController@store']);
 
 
-Route::group(['prefix' => 'dotaznik'], function () {
-    Route::get('', ['as' => 'form.index', 'uses' => 'FormController@index']);
-    Route::post('store', ['as' => 'form.store', 'uses' => 'FormController@store']);
+    Route::group(['prefix' => 'dotaznik'], function () {
+        Route::get('', ['as' => 'form.index', 'uses' => 'FormController@index']);
+        Route::post('store', ['as' => 'form.store', 'uses' => 'FormController@store']);
+    });
+
+    Route::get('{url}', ['as' => 'pages.index', 'uses' => 'PagesController@index']);
+
 });
-
-
-Route::get('/{url}', ['as' => 'pages.index', 'uses' => 'PagesController@index']);
-
-
-
 
 
 Auth::routes();
 
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
 
 //Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@index']);
 
@@ -68,6 +72,8 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+
 
 
     Route::get('reset', ['as' => 'admin.reset', 'uses' => 'Admin\AdminController@password']);
