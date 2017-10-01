@@ -1,5 +1,13 @@
 /*Admin*/
 
+body{
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #333;
+}
+
 #admin{
     background: #293c4c;
 }
@@ -19,7 +27,7 @@
     padding-right: 0 !important;
 }
 .admin-menu{
-    padding-top: 30px;
+    padding-top: 68px;
     background: #293c4c;
 }
 .admin-menu h2{
@@ -71,7 +79,7 @@
     padding: 8px 30px;
 }
 .admin-content{
-    min-height: 1000px;
+    min-height: calc(100vh - 98px) !important;
     background: #f1f1f1;
 }
 .admin-content table tr td{
@@ -287,3 +295,9 @@ input:checked + .slider:before {
     margin-top: -27px;
 }
 
+.switch-admin-text {
+    position: relative;
+    top: 2px;
+    left: 43px;
+    width: 500px;
+}

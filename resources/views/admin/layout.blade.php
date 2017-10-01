@@ -9,22 +9,19 @@
     <meta name="author" content="Robert">
     <link rel="icon" href="../../favicon.ico">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <link media="all" type="text/css" rel="stylesheet" href="/css/open-sans.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800,900&amp;subset=latin-ext" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&amp;subset=latin-ext" rel="stylesheet">
-
     <link media="all" type="text/css" rel="stylesheet" href="/css/admin.css?v=<?php echo date('YMDHis'); ?>">
 
     <style>
         main{
-            padding-top: 0px;
+            padding-top: 0;
         }
         footer>.container{
             border-top: 1px solid #f1f1f1;
-            margin:0px;
+            margin:0;
             padding-left: 20px;
             padding-right: 20px;
             width: 100%;
@@ -67,8 +64,8 @@
 
 @include('admin.partitials.footer')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/jquery_3.2.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -77,6 +74,7 @@
             $('footer').css('width','100%');
             $('footer').css('bottom','0px');
         }
+
 
         if($('.alert').length !== 0){
             if($('.alert').html().length > 0){

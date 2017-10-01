@@ -12,8 +12,8 @@
         <button type="button" data-toggle="dropdown">{{ Auth::user()->name }}
             <span class="caret"></span></button>
         <ul class="dropdown-menu">
-            <li><a href="{{ route('logout') }}">Odhlásit</a></li>
             <li><a href="{{ route('admin.reset') }}">Změna hesla</a></li>
+            <li><a href="{{ route('logout') }}">Odhlásit</a></li>
         </ul>
     </div>
 </div>

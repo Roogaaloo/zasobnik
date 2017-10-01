@@ -32,7 +32,7 @@ class MenuController extends Controller
         $request->session()->flash('success', "Položka byla vytvořena!");
 
 
-        return Redirect::action('admin\MenuController@index');
+        return Redirect::action('Admin\MenuController@index');
     }
 
     public function update(Request $request, $id) {
@@ -50,7 +50,7 @@ class MenuController extends Controller
         $request->session()->flash('success', "Položka byla upravena!");
 
 
-        return Redirect::action('admin\MenuController@index');
+        return Redirect::action('Admin\MenuController@index');
     }
 
 
@@ -64,7 +64,7 @@ class MenuController extends Controller
 
         $request->session()->flash('success', "Položka byla zakázána!");
 
-        return Redirect::action('admin\MenuController@index');
+        return Redirect::action('Admin\MenuController@index');
     }
 
     public function show(Request $request, $id)
@@ -77,7 +77,7 @@ class MenuController extends Controller
 
         $request->session()->flash('success', "Položka byla povolena!");
 
-        return Redirect::action('admin\MenuController@index');
+        return Redirect::action('Admin\MenuController@index');
     }
 
     public function delete(Request $request, $id)
@@ -88,7 +88,7 @@ class MenuController extends Controller
 
         $request->session()->flash('success', "Položka byla smazána!");
 
-        return Redirect::action('admin\MenuController@index');
+        return Redirect::action('Admin\MenuController@index');
     }
 
 }

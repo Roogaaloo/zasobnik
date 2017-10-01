@@ -11,7 +11,7 @@
             <table class="table table-striped">
                 <thead style="font-weight: 600;">
                 <tr>
-                    <td width="50px">Pořadí</td>
+                    <td width="100">Pořadí</td>
                     <td>Název</td>
                     <td>URL</td>
                     <td class="text-center">Status</td>

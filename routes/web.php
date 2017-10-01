@@ -52,6 +52,9 @@ Route::group(['prefix' => 'dotaznik'], function () {
 });
 
 
+Route::get('/{url}', ['as' => 'pages.index', 'uses' => 'PagesController@index']);
+
+
 
 
 
@@ -67,12 +70,15 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
-    Route::get('reset', ['as' => 'admin.reset', 'uses' => 'admin\AdminController@password']);
-    Route::post('{id}/reset-password', ['as' => 'admin.resetPassword', 'uses' => 'admin\AdminController@reset']);
+    Route::get('reset', ['as' => 'admin.reset', 'uses' => 'Admin\AdminController@password']);
+    Route::post('{id}/reset-password', ['as' => 'admin.resetPassword', 'uses' => 'Admin\AdminController@reset']);
 
 
 
-    Route::get('', ['as' => 'admin.template.home', 'uses' => 'admin\AdminController@index']);
+    Route::get('', ['as' => 'admin.template.home', 'uses' => 'Admin\AdminController@index']);
+
+
+
 
 
     Route::group(['prefix' => 'proc-se-mnou'], function () {
@@ -84,6 +90,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('', ['as' => 'admin.partners.list', 'uses' => 'AboutController@indexAdminPartners']);
         Route::post('store', ['as' => 'admin.partners.store', 'uses' => 'AboutController@store']);
         Route::get('{id}/delete', ['as' => 'admin.partners.delete', 'uses' => 'AboutController@destroy']);
+    });
+
+
+    Route::group(['prefix' => 'pages'], function () {
+        Route::get('', ['as' => 'admin.pages.index', 'uses' => 'Admin\PagesController@index']);
+        Route::get('{id}/edit', ['as' => 'admin.pages.edit', 'uses' => 'Admin\PagesController@edit']);
+        Route::post('{id}/update', ['as' => 'admin.pages.update', 'uses' => 'Admin\PagesController@update']);
+        Route::get('{id}/delete', ['as' => 'admin.pages.delete', 'uses' => 'Admin\PagesController@destroy']);
+        Route::get('create', ['as' => 'admin.pages.create', 'uses' => 'Admin\PagesController@create']);
+        Route::post('store', ['as' => 'admin.pages.store', 'uses' => 'Admin\PagesController@store']);
     });
 
     Route::group(['prefix' => 'produkty'], function () {
@@ -126,21 +142,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'menu'], function () {
-        Route::get('', ['as' => 'admin.menu.list', 'uses' => 'admin\MenuController@index']);
-        Route::get('create', ['as' => 'admin.menu.create', 'uses' => 'admin\MenuController@create']);
-        Route::post('store', ['as' => 'admin.menu.store', 'uses' => 'admin\MenuController@store']);
-        Route::post('{id}/update', ['as' => 'admin.menu.update', 'uses' => 'admin\MenuController@update']);
-        Route::get('{id}/hide', ['as' => 'admin.menu.hide', 'uses' => 'admin\MenuController@hide']);
-        Route::get('{id}/show', ['as' => 'admin.menu.show', 'uses' => 'admin\MenuController@show']);
-        Route::get('{id}/delete', ['as' => 'admin.menu.delete', 'uses' => 'admin\MenuController@delete']);
+        Route::get('', ['as' => 'admin.menu.list', 'uses' => 'Admin\MenuController@index']);
+        Route::get('create', ['as' => 'admin.menu.create', 'uses' => 'Admin\MenuController@create']);
+        Route::post('store', ['as' => 'admin.menu.store', 'uses' => 'Admin\MenuController@store']);
+        Route::post('{id}/update', ['as' => 'admin.menu.update', 'uses' => 'Admin\MenuController@update']);
+        Route::get('{id}/hide', ['as' => 'admin.menu.hide', 'uses' => 'Admin\MenuController@hide']);
+        Route::get('{id}/show', ['as' => 'admin.menu.show', 'uses' => 'Admin\MenuController@show']);
+        Route::get('{id}/delete', ['as' => 'admin.menu.delete', 'uses' => 'Admin\MenuController@delete']);
     });
 
 
 
 
     Route::group(['prefix' => 'dotaznik'], function () {
-        Route::get('', ['as' => 'admin.form.list', 'uses' => 'admin\FormController@index']);
-        Route::get('{id}/detail', ['as' => 'admin.form.detail', 'uses' => 'admin\FormController@detail']);
+        Route::get('', ['as' => 'admin.form.list', 'uses' => 'Admin\FormController@index']);
+        Route::get('{id}/detail', ['as' => 'admin.form.detail', 'uses' => 'Admin\FormController@detail']);
     });
 
 
