@@ -44,7 +44,6 @@ class PagesController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'url' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {

@@ -56,7 +56,9 @@ Route::group(['prefix' => '/', 'middleware' => 'web'], function () {
         Route::post('store', ['as' => 'form.store', 'uses' => 'FormController@store']);
     });
 
+
     Route::get('{url}', ['as' => 'pages.index', 'uses' => 'PagesController@index']);
+
 
 });
 

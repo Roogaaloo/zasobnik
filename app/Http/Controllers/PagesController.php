@@ -9,12 +9,17 @@ use Illuminate\Support\Facades\Redirect;
 class PagesController extends Controller
 {
     public function index($url) {
-        $page = Pages::where('url', $url)->where('status', 1)->first();
 
-        if($page){
-            return view('pages.index', compact('page'));
-        }else {
-            return Redirect::action('HomeController@error');
+        if($url) {
+            $page = Pages::where('url', $url)->where('status', 1)->first();
+
+            if ($page) {
+                return view('pages.index', compact('page'));
+            } else {
+                return Redirect::action('HomeController@error');
+            }
+        }else{
+            return view('error.404', compact('heading'));
         }
 
     }

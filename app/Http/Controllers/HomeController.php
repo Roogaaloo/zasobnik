@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Category;
-use App\HomeText;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\MeetingAdmin;
 use App\Mail\MeetingUser;
 use Illuminate\Support\Facades\Validator;
+use App\Pages;
 
 class HomeController extends Controller
 {
@@ -24,16 +23,9 @@ class HomeController extends Controller
 
     public function index()
     {
+       $page = Pages::where('url', null)->where('status', 1)->first();
 
-        $banners = DB::table('banners')->where('status', 1)->orderBy('sort', 'asc')->get();
-        $categories = DB::table('categories')->where('status', 1)->where('hp_status', 1)->get();
-        $home_text = DB::table('home_text')->first();
-        $articles = DB::table('articles')->where('status', 1)->where('hp_status', 1)->orderBy('publish_at', 'desc')->get();
-        $references = DB::table('references')->where('status', 1)->where('hp_status', 1)->get();
-        $partners = DB::table('partners')->where('status', 1)->get();
-
-
-       return view('template.home', compact('categories','home_text', 'articles', 'references', 'partners', 'banners'));
+       return view('template.home', compact('page'));
     }
 
     public function error()

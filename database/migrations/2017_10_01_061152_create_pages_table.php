@@ -18,7 +18,7 @@ class CreatePagesTable extends Migration
 
             $table->string('title');
             $table->string('perex', 250)->nullable();
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->date('publish_at');

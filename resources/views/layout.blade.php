@@ -5,16 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Návrh i realizace webových aplikací.">
-    <meta name="keywords" content="web, webové stránky, webovky, Robert Galovič, ">
+    <meta name="description" content="{{ $page->meta_description??'Robert Galovič | Web developer' }}">
+    <meta name="keywords" content="{{ $page->meta_keywords??'Robert Galovič | Web developer' }}">
     <meta name="author" content="Robert Galovič">
     <meta name="robots" content="noindex,nofollow">
+    <title>{{ $page->meta_title??'Robert Galovič | Web developer' }}</title>
 
-
-    <link rel="icon" type="image/png" href="http://www.svarovskyjiri.cz/img/favicon.ico" sizes="32x32">
-    <link rel="icon" type="image/png" href="http://www.svarovskyjiri.cz/img/favicon.ico" sizes="192x192">
-    <link rel="icon" type="image/png" href="http://www.svarovskyjiri.cz/img/favicon.ico" sizes="96x96">
-    <link rel="icon" type="image/png" href="http://www.svarovskyjiri.cz/img/favicon.ico" sizes="16x16">
+    <link rel="icon" type="image/png" href="favicon.ico">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('styles')
@@ -33,30 +30,11 @@
     $minifier->render();
 
     ?>
-    <title>@if(isset($title)) {{ $title }} @else Robert Galovič | Web developer @endif</title>
-    @if($_SERVER['REQUEST_URI'] == '/kontakt')
-        <style>
-            main{
-                padding-top: 0;
-                padding-bottom: 50px;
-            }
-        </style>
-    @else
-        <style>
-            footer{
-                margin-top: 50px;
-            }
-        </style>
-    @endif
+
 
   </head>
 <body>
-<div class="meeting-slide">
-    <i class="fa fa-handshake-o"></i>
-    <div class="meeting-slide-title">
-        Sjednat<br />schůzku
-    </div>
-</div>
+
 @if (Session::has('success'))
     <div class="alert alert-success">
         {{ Session::get('success') }}
