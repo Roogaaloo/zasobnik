@@ -18,9 +18,6 @@ class PagesController extends Controller
             } else {
                 return Redirect::action('HomeController@error');
             }
-        }else{
-            return view('error.404', compact('heading'));
         }
-
     }
 }
