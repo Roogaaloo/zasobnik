@@ -15,21 +15,23 @@ class CreateFormTable extends Migration
     {
         Schema::create('t_form', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('question1');
-            $table->string('question2');
-            $table->string('question3');
-            $table->string('question4');
-            $table->string('question5');
-            $table->string('question6');
-            $table->string('question7');
-            $table->string('question8');
-            $table->string('question9');
-            $table->string('question10');
-            $table->string('question11');
-            $table->string('question12');
-            $table->string('question13');
-            $table->string('question14');
-            $table->string('question15');
+            $table->string('question1')->nullable()->default(null);
+            $table->string('question2')->nullable()->default(null);
+            $table->string('question3')->nullable()->default(null);
+            $table->string('question4')->nullable()->default(null);
+            $table->string('question5')->nullable()->default(null);
+            $table->string('question6')->nullable()->default(null);
+            $table->string('question7')->nullable()->default(null);
+            $table->string('question8')->nullable()->default(null);
+            $table->string('question9')->nullable()->default(null);
+            $table->string('question10')->nullable()->default(null);
+            $table->string('question11')->nullable()->default(null);
+            $table->string('question12')->nullable()->default(null);
+            $table->string('question13')->nullable()->default(null);
+            $table->string('question14')->nullable()->default(null);
+            $table->string('question15')->nullable()->default(null);
+            $table->string('question16')->nullable()->default(null);
+            $table->string('question17')->nullable()->default(null);
 
             $table->timestamps();
         });

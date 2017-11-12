@@ -110,7 +110,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 
-    Route::group(['prefix' => 'dotaznik'], function () {
+    Route::group(['prefix' => 'anketa'], function () {
         Route::get('', ['as' => 'admin.form.list', 'uses' => 'Admin\FormController@index']);
         Route::get('{id}/detail', ['as' => 'admin.form.detail', 'uses' => 'Admin\FormController@detail']);
     });
@@ -135,7 +135,8 @@ View::composer('partitials.footer_contact', function($view){
 
 Route::group(['prefix' => '/', 'middleware' => 'web'], function () {
 
-    Route::get('', ['as' => 'template.home', 'uses' => 'HomeController@index']);
+   // Route::get('', ['as' => 'template.home', 'uses' => 'HomeController@index']);
+    Route::get('', ['as' => 'form.index', 'uses' => 'FormController@index']);
 
     Route::get('stranka-nenalezena', ['as' => '404', 'uses' => 'HomeController@error']);
 
@@ -156,7 +157,7 @@ Route::group(['prefix' => '/', 'middleware' => 'web'], function () {
     Route::post('kontakt/sendMessage', ['as' => 'contact.sendMessage', 'uses' => 'ContactController@store']);
 
 
-    Route::group(['prefix' => 'dotaznik'], function () {
+    Route::group(['prefix' => 'anketa'], function () {
         Route::get('', ['as' => 'form.index', 'uses' => 'FormController@index']);
         Route::post('store', ['as' => 'form.store', 'uses' => 'FormController@store']);
     });

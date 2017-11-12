@@ -10,8 +10,7 @@ class FormController extends Controller
 {
     public function index()
     {
-
-        $title = 'Dotazník';
+        $title = 'Anketa Toxoplazmóza';
 
         return view('form.index', compact('title'));
     }
@@ -19,22 +18,26 @@ class FormController extends Controller
     public function store(Request $request)
     {
 
-        DB::table('t_forms')->insert([
-            'question1' => $request->question1,
-            'question2' => $request->question2,
-            'question3' => $request->question3,
-            'question4' => $request->question4,
-            'question5' => $request->question5,
-            'question6' => $request->question6,
-            'question7' => $request->question7,
-            'question8' => $request->question8,
-            'question9' => $request->question9,
-            'question10' => $request->question10,
-            'question11' => $request->question11,
-            'question12' => $request->question12,
-            'question13' => $request->question13,
-            'question14' => $request->question14,
-            'question15' => $request->question15,
+        DB::table('t_form')->insert([
+            'question1' => $request->sex??'Nevyplněno',
+            'question2' => $request->age??'Nevyplněno',
+            'question3' => $request->owner??'Nevyplněno',
+            'question4' => $request->heard??'Nevyplněno',
+            'question5' => $request->where??'Nevyplněno',
+            'question6' => $request->transfer_to??'Nevyplněno',
+            'question7' => $request->health??'Nevyplněno',
+            'question8' => implode(', ',$request->cause??array('Nevyplněno')),
+            'question9' => $request->class??'Nevyplněno',
+            'question10' => $request->pregnant??'Nevyplněno',
+            'question11' => $request->touch??'Nevyplněno',
+            'question12' => $request->clean??'Nevyplněno',
+            'question13' => $request->suffering??'Nevyplněno',
+            'question14' => $request->toxic??'Nevyplněno',
+            'question15' => $request->income??'Nevyplněno',
+            'question16' => implode(', ',$request->transfer??array('Nevyplněno')),
+            'question17' => $request->cure??'Nevyplněno',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         $request->session()->flash('success', 'Děkuji. Vyplněný dotazník byl uložen do databáze.');

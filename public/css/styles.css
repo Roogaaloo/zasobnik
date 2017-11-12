@@ -277,8 +277,8 @@ section.padding{
     font-weight: 400;
 }
 .navbar-brand img{
-    width: 100%;
-    margin-top: -10px;
+    height: 50px;
+    margin-top: -5px;
     transition: 0.3s ease;
 }
 h1, h2, h3, h4{
@@ -567,14 +567,14 @@ footer>.container{
         padding: 15px 15px !important;
     }
     .logo-width{
-        width: 60% !important;
+        height: 50px;
         margin-top: -7px !important;
     }
     .navbar-inverse .navbar-nav>li>a {
         padding: 25px 18px;
     }
     .navbar-brand img {
-        width: 80%;
+        height: 50px;
         margin-top: -4px;
     }
     .category-card h2 {
@@ -776,7 +776,7 @@ footer>.container{
         width: 80%;
     }
     .navbar-brand img {
-        width: 65%;
+        height: 50px;
     }
     .logo-width{
         width: 65% !important;
@@ -941,4 +941,17 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.form-label {
+    position: relative;
+    left: 70px;
+    top: 6px;
+    cursor: pointer;
+    width: 100%;
+    white-space: pre;
+}
+
+.womanYes, .pregnantYes {
+    display: none;
 }

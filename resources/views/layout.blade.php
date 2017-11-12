@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,6 +114,33 @@
 @yield('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $('.woman').on('click', function(){
+            if($(this).is('.clicked')){
+                $('.womanYes').slideDown();
+            }else {
+                $(this).addClass('clicked');
+                $('.womanYes').slideUp();
+            }
+        });
+        $('.men').on('click', function(){
+            $('.woman').removeClass('clicked');
+            $('.womanYes').slideUp();
+        });
+
+        $('.pregnantTrue').on('click', function(){
+            if($(this).is('.clicked')){
+                $('.pregnantYes').slideDown();
+            }else {
+                $(this).addClass('clicked');
+                $('.pregnantYes').slideUp();
+            }
+        });
+        $('.pregnantFalse').on('click', function(){
+            $('.pregnantTrue').removeClass('clicked');
+            $('.pregnantYes').slideUp();
+        });
+
 
         $('.meeting-popup .option label').toggle(function(){
             $(this).css({background: '#87bc26', color: '#fff'});
