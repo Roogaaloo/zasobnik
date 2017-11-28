@@ -117,16 +117,19 @@
 
         $('.woman').on('click', function(){
             if($(this).is('.clicked')){
-                $('.womanYes').slideDown();
+              //  $('.womanYes').slideDown();
             }else {
                 $(this).addClass('clicked');
-                $('.womanYes').slideUp();
+               // $('.womanYes').slideUp();
             }
         });
         $('.men').on('click', function(){
             $('.woman').removeClass('clicked');
             $('.womanYes').slideUp();
+            $('.pregnantYes').slideUp();
         });
+
+
 
         $('.pregnantTrue').on('click', function(){
             if($(this).is('.clicked')){
@@ -139,6 +142,49 @@
         $('.pregnantFalse').on('click', function(){
             $('.pregnantTrue').removeClass('clicked');
             $('.pregnantYes').slideUp();
+        });
+
+
+        $('.heardTrue').on('click', function(){
+            if($(this).is('.clicked')){
+                $('.heardYes:not(".pregnantYes"):not(".transferYes"):not(".healthYes")').slideDown();
+            }else {
+                $(this).addClass('clicked');
+                $('.heardYes:not(".pregnantYes"):not(".transferYes"):not(".healthYes")').slideUp();
+            }
+        });
+        $('.heardFalse').on('click', function(){
+            $('.heardTrue').removeClass('clicked');
+            $('.heardYes').slideUp();
+        });
+
+        $('.transferTrue').on('click', function(){
+            if($(this).is('.clicked')){
+                $('.transferYes:not(".healthYes"):not(".pregnantYes"):not(".womanYes")').slideDown();
+            }else {
+                $(this).addClass('clicked');
+                $('.transferYes:not(".healthYes"):not(".pregnantYes"):not(".womanYes")').slideUp();
+            }
+            if($('.woman').is('.clicked')) {
+                $('.womanYes').slideDown();
+            }
+        });
+        $('.transferFalse').on('click', function(){
+            $('.transferTrue').removeClass('clicked');
+            $('.transferYes').slideUp();
+        });
+
+        $('.healthTrue').on('click', function(){
+            if($(this).is('.clicked')){
+                $('.healthYes:not(".pregnantYes"):not(".womanYes")').slideDown();
+            }else {
+                $(this).addClass('clicked');
+                $('.healthYes:not(".pregnantYes"):not(".womanYes")').slideUp();
+            }
+        });
+        $('.healthFalse').on('click', function(){
+            $('.healthTrue').removeClass('clicked');
+            $('.healthYes').slideUp();
         });
 
 

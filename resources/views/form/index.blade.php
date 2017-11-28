@@ -107,19 +107,19 @@
                         <div class="row form-group">
                             <div class="col-sm-12">
                                 <h3>Slyšel/a jste pojem TOXOPLAZMÓZA?</h3>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch heardTrue">
                                     <input type="radio" name="heard" value="Ano" id="heardYes">
                                     <span class="slider round"></span>
                                     <label for="heardYes" class="form-label">Ano</label>
                                 </label>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch heardFalse">
                                     <input type="radio" name="heard" value="Ne" id="heardNo">
                                     <span class="slider round"></span>
                                     <label for="heardNo" class="form-label">Ne</label>
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes">
                             <div class="col-sm-12">
                                 <h3>Kde jste o něm slyšel/a?</h3>
                                 <label class="switch form-switch">
@@ -149,49 +149,49 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes">
                             <div class="col-sm-12">
                                 <h3>Je toxoplazmóza přenosná na člověka?</h3>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch transferTrue">
                                     <input type="radio" name="transfer_to" value="Ano" id="transferYes">
                                     <span class="slider round"></span>
                                     <label for="transferYes" class="form-label">Ano</label>
                                 </label>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch transferFalse">
                                     <input type="radio" name="transfer_to" value="Ne" id="transferNo">
                                     <span class="slider round"></span>
                                     <label for="transferNo" class="form-label">Ne</label>
                                 </label>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch transferFalse">
                                     <input type="radio" name="transfer_to" value="Nevím" id="transferIDK">
                                     <span class="slider round"></span>
                                     <label for="transferIDK" class="form-label">Nevím</label>
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes transferYes">
                             <div class="col-sm-12">
-                                <h3>Pokud ano, má vliv na lidské zdraví?</h3>
-                                <label class="switch form-switch">
+                                <h3>Má vliv na lidské zdraví?</h3>
+                                <label class="switch form-switch healthTrue">
                                     <input type="radio" name="health" value="Ano" id="healthYes">
                                     <span class="slider round"></span>
                                     <label for="healthYes" class="form-label">Ano</label>
                                 </label>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch healthFalse">
                                     <input type="radio" name="health" value="Ne" id="healthNo">
                                     <span class="slider round"></span>
                                     <label for="healthNo" class="form-label">Ne</label>
                                 </label>
-                                <label class="switch form-switch">
+                                <label class="switch form-switch healthFalse">
                                     <input type="radio" name="health" value="Nevím" id="healthIDK">
                                     <span class="slider round"></span>
                                     <label for="healthIDK" class="form-label">Nevím</label>
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes transferYes healthYes">
                             <div class="col-sm-12">
-                                <h3>Pokud ano, co způsobuje? <small>(Můžete zaškrtnout více odpovědí)</small></h3>
+                                <h3>Co způsobuje? <small>(Můžete zaškrtnout více odpovědí)</small></h3>
                                 <label class="switch form-switch">
                                     <input type="checkbox" name="cause[]" value="Kožní problémy" id="skin">
                                     <span class="slider round"></span>
@@ -223,13 +223,18 @@
                                     <label for="psychic" class="form-label">Psychické problémy</label>
                                 </label>
                                 <label class="switch form-switch">
+                                    <input type="checkbox" name="cause[]" value="Nic" id="nothingCause">
+                                    <span class="slider round"></span>
+                                    <label for="nothingCause" class="form-label">Nic</label>
+                                </label>
+                                <label class="switch form-switch">
                                     <input type="checkbox" name="cause[]" value="Nevím" id="causeIDK">
                                     <span class="slider round"></span>
                                     <label for="causeIDK" class="form-label">Nevím</label>
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes transferYes">
                             <div class="col-sm-12">
                                 <h3>Jaká je hlavní riziková skupina?</h3>
                                 <label class="switch form-switch">
@@ -254,7 +259,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group womanYes">
+                        <div class="row form-group womanYes heardYes transferYes">
                             <div class="col-sm-12">
                                 <h3>Jste, nebo jste byla, těhotná?</h3>
                                 <label class="switch form-switch pregnantTrue">
@@ -269,7 +274,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group pregnantYes">
+                        <div class="row form-group pregnantYes heardYes">
                             <div class="col-sm-12">
                                 <h3>Byla jste v těhotenství ve styku s kočkami?</h3>
                                 <label class="switch form-switch">
@@ -284,7 +289,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group pregnantYes">
+                        <div class="row form-group pregnantYes heardYes">
                             <div class="col-sm-12">
                                 <h3>Praktikovala jste v těhotenství nějaká preventivní opatření proti toxoplazmóze?</h3>
                                 <label class="switch form-switch">
@@ -304,7 +309,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes transferYes">
                             <div class="col-sm-12">
                                 <h3>Trpíte Vy či někdo z Vašeho okolí toxoplazmózou?</h3>
                                 <label class="switch form-switch">
@@ -324,7 +329,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group heardYes">
                             <div class="col-sm-12">
                                 <h3>Trpí Vaše kočka toxoplazmózou?</h3>
                                 <label class="switch form-switch">
@@ -345,7 +350,7 @@
                             </div>
                         </div>
 
-                        <div class="row form-group">
+                        <div class="row form-group heardYes">
                             <div class="col-sm-12">
                                 <h3>Jaký je původce toxoplazmózy?</h3>
                                 <label class="switch form-switch">
@@ -371,7 +376,7 @@
                             </div>
                         </div>
 
-                        <div class="row form-group">
+                        <div class="row form-group heardYes transferYes">
                             <div class="col-sm-12">
                                 <h3>Jaké jsou možnosti přenosu toxoplazmózy? <small>(Můžete zaškrtnout více odpovědí)</small></h3>
                                 <label class="switch form-switch">
@@ -417,7 +422,7 @@
                             </div>
                         </div>
 
-                        <div class="row form-group">
+                        <div class="row form-group heardYes">
                             <div class="col-sm-12">
                                 <h3>Je toxoplazmóza léčitelná?</h3>
                                 <label class="switch form-switch">
