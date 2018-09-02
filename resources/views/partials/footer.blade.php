@@ -1,6 +1,6 @@
 <footer>
     @if($_SERVER['REQUEST_URI'] != '/kontakt')
-        @include('partitials.footer_contact')
+        @include('partials.footer_contact')
     @endif
     <div class="container">
         <div class="row">

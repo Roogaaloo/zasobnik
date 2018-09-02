@@ -1,127 +1,63 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    /*
-     * All website designed and programed by Robert Galovič.
-     */
-
-    public function index()
+    public function __construct()
     {
+
+        $name = config('project');
+
+        view()->composer('*', function ($view) {
+            $view->adminMenu = $this->createAdminMenu();
+        });
+
+    }
+
+    private function createAdminMenu() {
+        $adminMenu = ([
+            'dashboard' => [
+                'title' => 'Dashboard',
+                'route' => 'admin.template.home',
+            ],
+            'pages' => [
+                'title' => 'Stránky',
+                'route' => 'admin.pages.index',
+            ],
+            'products' => [
+                'title' => 'Produkty',
+                'route' => 'admin.products.index',
+            ],
+            'blog' => [
+                'title' => 'Blog',
+                'route' => 'admin.blog.index',
+            ],
+            'banner' => [
+                'title' => 'Banner',
+                'route' => 'admin.banner.index',
+            ],
+            'menu' => [
+                'title' => 'Menu',
+                'route' => 'admin.menu.index',
+            ],
+            'users' => [
+                'title' => 'Uživatelé',
+                'route' => 'admin.users.index',
+            ],
+        ]);
+
+        return $adminMenu;
+    }
+
+    public function index(){
         return view('admin.template.home');
-    }
-
-    public function logout()
-    {
-
-        $this->auth->logout();
-        Session::flush('success', 'Úspěšně odhlášeno.');
-        return redirect('/');
-
-
-    }
-
-    public function password()
-    {
-        return view('admin.template.reset');
-    }
-
-    public function reset(Request $request, $id)
-    {
-
-        if($request->password == $request->password_check) {
-
-            DB::table('users')
-                ->where('id', $id)
-                ->update([
-                    'password' => bcrypt($request->password),
-                ]);
-
-            session()->flash('success', "Heslo bylo změněno.");
-            Auth::logout();
-            return redirect('/admin');
-        }else{
-            session()->flash('error', "Hesla se neshodují.");
-            return redirect('/admin/reset');
-        }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

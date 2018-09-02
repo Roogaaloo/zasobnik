@@ -23,31 +23,14 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-
-
-
-    Route::get('reset', ['as' => 'admin.reset', 'uses' => 'Admin\AdminController@password']);
-    Route::post('{id}/reset-password', ['as' => 'admin.resetPassword', 'uses' => 'Admin\AdminController@reset']);
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('reset', ['as' => 'admin.reset', 'uses' => 'Admin\AdminController@password']);
+        Route::post('{id}/reset-password', ['as' => 'admin.resetPassword', 'uses' => 'Admin\AdminController@reset']);
+    });
 
 
 
     Route::get('', ['as' => 'admin.template.home', 'uses' => 'Admin\AdminController@index']);
-
-
-
-
-
-    Route::group(['prefix' => 'proc-se-mnou'], function () {
-        Route::get('', ['as' => 'admin.about.list', 'uses' => 'AboutController@indexAdmin']);
-        Route::post('update', ['as' => 'admin.about.update', 'uses' => 'AboutController@update']);
-    });
-
-    Route::group(['prefix' => 'partneri'], function () {
-        Route::get('', ['as' => 'admin.partners.list', 'uses' => 'AboutController@indexAdminPartners']);
-        Route::post('store', ['as' => 'admin.partners.store', 'uses' => 'AboutController@store']);
-        Route::get('{id}/delete', ['as' => 'admin.partners.delete', 'uses' => 'AboutController@destroy']);
-    });
-
 
     Route::group(['prefix' => 'pages'], function () {
         Route::get('', ['as' => 'admin.pages.index', 'uses' => 'Admin\PagesController@index']);
@@ -58,47 +41,43 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('store', ['as' => 'admin.pages.store', 'uses' => 'Admin\PagesController@store']);
     });
 
-    Route::group(['prefix' => 'produkty'], function () {
-        Route::get('', ['as' => 'admin.categories.list', 'uses' => 'CategoryController@indexAdmin']);
-        Route::get('{id}/edit', ['as' => 'admin.categories.edit', 'uses' => 'CategoryController@edit']);
-        Route::post('{id}/update', ['as' => 'admin.categories.update', 'uses' => 'CategoryController@update']);
-        Route::get('{id}/delete', ['as' => 'admin.categories.delete', 'uses' => 'CategoryController@destroy']);
-        Route::get('create', ['as' => 'admin.categories.create', 'uses' => 'CategoryController@create']);
-        Route::post('store', ['as' => 'admin.categories.store', 'uses' => 'CategoryController@store']);
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('', ['as' => 'admin.products.index', 'uses' => 'Admin\ProductsController@index']);
+        Route::get('{id}/edit', ['as' => 'admin.products.edit', 'uses' => 'Admin\ProductsController@edit']);
+        Route::post('{id}/update', ['as' => 'admin.products.update', 'uses' => 'Admin\ProductsController@update']);
+        Route::get('{id}/delete', ['as' => 'admin.products.delete', 'uses' => 'Admin\ProductsController@destroy']);
+        Route::get('create', ['as' => 'admin.products.create', 'uses' => 'Admin\ProductsController@create']);
+        Route::post('store', ['as' => 'admin.products.store', 'uses' => 'Admin\ProductsController@store']);
     });
 
     Route::group(['prefix' => 'blog'], function () {
-        Route::get('', ['as' => 'admin.blog.list', 'uses' => 'BlogController@indexAdmin']);
-        Route::get('{id}/edit', ['as' => 'admin.blog.edit', 'uses' => 'BlogController@edit']);
-        Route::post('{id}/update', ['as' => 'admin.blog.update', 'uses' => 'BlogController@update']);
-        Route::get('{id}/delete', ['as' => 'admin.blog.delete', 'uses' => 'BlogController@destroy']);
-        Route::get('create', ['as' => 'admin.blog.create', 'uses' => 'BlogController@create']);
-        Route::post('store', ['as' => 'admin.blog.store', 'uses' => 'BlogController@store']);
+        Route::get('', ['as' => 'admin.blog.index', 'uses' => 'Admin\BlogController@indexAdmin']);
+        Route::get('{id}/edit', ['as' => 'admin.blog.edit', 'uses' => 'Admin\BlogController@edit']);
+        Route::post('{id}/update', ['as' => 'admin.blog.update', 'uses' => 'Admin\BlogController@update']);
+        Route::get('{id}/delete', ['as' => 'admin.blog.delete', 'uses' => 'Admin\BlogController@destroy']);
+        Route::get('create', ['as' => 'admin.blog.create', 'uses' => 'Admin\BlogController@create']);
+        Route::post('store', ['as' => 'admin.blog.store', 'uses' => 'Admin\BlogController@store']);
     });
 
     Route::group(['prefix' => 'reference'], function () {
-        Route::get('', ['as' => 'admin.reference.list', 'uses' => 'ReferenceController@indexAdmin']);
-        Route::get('/{id}/edit', ['as' => 'admin.reference.edit', 'uses' => 'ReferenceController@edit']);
-        Route::post('{id}/update', ['as' => 'admin.reference.update', 'uses' => 'ReferenceController@update']);
-        Route::get('{id}/delete', ['as' => 'admin.reference.delete', 'uses' => 'ReferenceController@destroy']);
+        Route::get('', ['as' => 'admin.reference.index', 'uses' => 'Admin\ReferenceController@indexAdmin']);
+        Route::get('/{id}/edit', ['as' => 'admin.reference.edit', 'uses' => 'Admin\ReferenceController@edit']);
+        Route::post('{id}/update', ['as' => 'admin.reference.update', 'uses' => 'Admin\ReferenceController@update']);
+        Route::get('{id}/delete', ['as' => 'admin.reference.delete', 'uses' => 'Admin\ReferenceController@destroy']);
     });
 
-    Route::group(['prefix' => 'kontakt'], function () {
-        Route::get('', ['as' => 'admin.contact.list', 'uses' => 'ContactController@indexAdmin']);
-        Route::post('update', ['as' => 'admin.contact.update', 'uses' => 'ContactController@update']);
-    });
 
     Route::group(['prefix' => 'banner'], function () {
-        Route::get('', ['as' => 'admin.banner.list', 'uses' => 'BannerController@indexAdmin']);
-        Route::get('{id}/edit', ['as' => 'admin.banner.edit', 'uses' => 'BannerController@edit']);
-        Route::post('{id}/update', ['as' => 'admin.banner.update', 'uses' => 'BannerController@update']);
-        Route::get('{id}/delete', ['as' => 'admin.banner.delete', 'uses' => 'BannerController@destroy']);
-        Route::get('create', ['as' => 'admin.banner.create', 'uses' => 'BannerController@create']);
-        Route::post('store', ['as' => 'admin.banner.store', 'uses' => 'BannerController@store']);
+        Route::get('', ['as' => 'admin.banner.index', 'uses' => 'Admin\BannerController@indexAdmin']);
+        Route::get('{id}/edit', ['as' => 'admin.banner.edit', 'uses' => 'Admin\BannerController@edit']);
+        Route::post('{id}/update', ['as' => 'admin.banner.update', 'uses' => 'Admin\BannerController@update']);
+        Route::get('{id}/delete', ['as' => 'admin.banner.delete', 'uses' => 'Admin\BannerController@destroy']);
+        Route::get('create', ['as' => 'admin.banner.create', 'uses' => 'Admin\BannerController@create']);
+        Route::post('store', ['as' => 'admin.banner.store', 'uses' => 'Admin\BannerController@store']);
     });
 
     Route::group(['prefix' => 'menu'], function () {
-        Route::get('', ['as' => 'admin.menu.list', 'uses' => 'Admin\MenuController@index']);
+        Route::get('', ['as' => 'admin.menu.index', 'uses' => 'Admin\MenuController@index']);
         Route::get('create', ['as' => 'admin.menu.create', 'uses' => 'Admin\MenuController@create']);
         Route::post('store', ['as' => 'admin.menu.store', 'uses' => 'Admin\MenuController@store']);
         Route::post('{id}/update', ['as' => 'admin.menu.update', 'uses' => 'Admin\MenuController@update']);
@@ -107,14 +86,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('{id}/delete', ['as' => 'admin.menu.delete', 'uses' => 'Admin\MenuController@delete']);
     });
 
-
-
-
-    Route::group(['prefix' => 'anketa'], function () {
-        Route::get('', ['as' => 'admin.form.list', 'uses' => 'Admin\FormController@index']);
-        Route::get('{id}/detail', ['as' => 'admin.form.detail', 'uses' => 'Admin\FormController@detail']);
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('', ['as' => 'admin.users.index', 'uses' => 'Admin\UsersController@index']);
+        Route::get('create', ['as' => 'admin.users.create', 'uses' => 'Admin\UsersController@create']);
+        Route::get('edit', ['as' => 'admin.users.edit', 'uses' => 'Admin\UsersController@edit']);
+        Route::post('store', ['as' => 'admin.users.store', 'uses' => 'Admin\UsersController@store']);
+        Route::post('{id}/update', ['as' => 'admin.users.update', 'uses' => 'Admin\UsersController@update']);
+        Route::get('{id}/delete', ['as' => 'admin.users.delete', 'uses' => 'Admin\UsersController@delete']);
     });
-
 
 });
 
@@ -135,8 +114,7 @@ View::composer('partitials.footer_contact', function($view){
 
 Route::group(['prefix' => '/', 'middleware' => 'web'], function () {
 
-   // Route::get('', ['as' => 'template.home', 'uses' => 'HomeController@index']);
-    Route::get('', ['as' => 'form.index', 'uses' => 'FormController@index']);
+    Route::get('', ['as' => 'template.home', 'uses' => 'HomeController@index']);
 
     Route::get('stranka-nenalezena', ['as' => '404', 'uses' => 'HomeController@error']);
 

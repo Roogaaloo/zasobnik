@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partitials.static_photo')
+    @include('partials.static_photo')
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center header-block">

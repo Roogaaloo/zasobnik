@@ -10,7 +10,7 @@ use TwitterPhp\Connection\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class PagesController extends Controller
+class PagesController extends AdminController
 {
     public function index() {
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @include('partitials.static_photo')
+    @include('partials.static_photo')
 
 
         <section id="404">

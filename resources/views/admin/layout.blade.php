@@ -9,7 +9,6 @@
     <meta name="author" content="Robert">
     <link rel="icon" href="../../favicon.ico">
 
-
     <link media="all" type="text/css" rel="stylesheet" href="/css/open-sans.css">
     <link media="all" type="text/css" rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,6 +30,7 @@
     <title>Admin</title>
 </head>
 <body>
+
 
 @if (Session::has('success'))
     <div class="alert alert-success">
@@ -64,7 +64,7 @@
 
 @include('admin.partitials.footer')
 
-<script type="text/javascript" src="/js/jquery_3.2.1.js"></script>
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 
 <script type="text/javascript">

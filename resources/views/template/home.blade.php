@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partitials.slider')
+    @include('partials.slider')
     @if(isset($page))
         <div class="container">
             <div class="row">

@@ -5,7 +5,7 @@
     <section>
         <h1>{{ $heading }}</h1>
 
-        <form action="{{ route('admin.categories.store') }}" method="post">
+        <form action="{{ route('admin.products.store') }}" method="post">
             {!! csrf_field() !!}
 
             <div class="form-group">
@@ -30,12 +30,8 @@
                 <label>Status</label>
             </div>
             <div class="form-group">
-                <input type="checkbox" name="hp_status" value="1">
-                <label>Zobrazit na homepage</label>
-            </div>
-            <div class="form-group">
                 <input type="submit" name="submit" value="Vytvořit" class="btn">
-                <a href="{{ route('admin.categories.list') }}" class="btn">Zpět</a>
+                <a href="{{ route('admin.products.index') }}" class="btn">Zpět</a>
             </div>
         </form>
     </section>

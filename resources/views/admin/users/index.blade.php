@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if($pages)
+
     <h1>{{ $heading }}</h1>
     <a href="{{ route('admin.pages.create') }}" class="btn pull-right btn-create">Vytvořit stránku</a>
     <table class="table table-striped">
@@ -42,6 +42,6 @@
             @endforeach
         </tbody>
     </table>
-@endif
+
 
 @endsection

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
-class MenuController extends Controller
+class MenuController extends AdminController
 {
     public function index() {
 

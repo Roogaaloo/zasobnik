@@ -6,8 +6,8 @@
 
 
 
-    @include('partitials.google_map')
-    @include('partitials.footer_contact')
+    @include('partials.google_map')
+    @include('partials.footer_contact')
 
     <section id="contact">
         <div class="container contact">

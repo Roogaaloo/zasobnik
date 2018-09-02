@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Users;
 
-class UsersController extends Controller
+class UsersController extends AdminController
 {
     public function index() {
 

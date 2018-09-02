@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partitials.static_photo')
+    @include('partials.static_photo')
 
     @if($categories)
         <section id="categories">
